@@ -2,21 +2,21 @@ from heap import *
 
 class PriorityQueue(object):
     def __init__(self,size,heap):
-        self.size = size
-        self.heap = heap
+        self.__size = size
+        self.__heap = heap
 
     def heap_maximum(self,A):
         return A[1 - 1]
 
     def heap_extract(self,A):
-        if self.size < 1:
+        if self.__size < 1:
             print('error,heap underflow!!')
             return None
         maxnum = A[1 - 1]
-        A[1 - 1],A[self.size - 1] = A[self.size - 1],A[1 - 1]
-        self.size -= 1
-        self.heap.setsize(self.size)
-        self.heap.max_heapify(A,1)
+        A[1 - 1],A[self.__size - 1] = A[self.__size - 1],A[1 - 1]
+        self.__size -= 1
+        self.__heap.setsize(self.__size)
+        self.__heap.max_heapify(A,1)
         return maxnum
 
     def heap_increase_key(self,i,key):
@@ -29,13 +29,13 @@ class PriorityQueue(object):
             i = i // 2
 
     def max_heap_insert(self,A,key):
-        self.size += 1
-        self.heap.setsize(self.size)
-        A[self.size - 1]= float('-Inf')
-        self.heap_increase_key(self.size,key)
+        self.__size += 1
+        self.__heap.setsize(self.__size)
+        A[self.__size - 1]= float('-Inf')
+        self.heap_increase_key(self.__size,key)
 
     def printqueue(self,A):
-        print(A[0:self.size - 1])
+        print(A[0:self.__size - 1])
 
 if __name__ == '__main__':
     A = [4,1,3,2,16,9,10,14,8,7]

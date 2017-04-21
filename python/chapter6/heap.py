@@ -3,6 +3,9 @@ class Heap(object):
     def __init__(self,size):
         self.__size = size
 
+    def setsize(self,size):
+        self.__size = size
+
     def max_heapify(self,A,i):
         l = 2 * i
         r = 2 * i + 1
